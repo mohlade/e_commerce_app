@@ -92,7 +92,7 @@ class _FoodPageBodyState extends State< FoodPageBody> {
                         SizedBox(width: 10,),
                         IconAndTextWidget(
                             icon: Icons.access_time,
-                            text: '32mins',
+                            text: '31mins',
                             iconColor: AppColors.iconColor2),
                       ],
                     ),
