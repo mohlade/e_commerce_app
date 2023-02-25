@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/utils/colors.dart';
 
+import '../utils/dimensions.dart';
+
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
 
@@ -18,10 +20,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
     return Scaffold(
       body: Column(
         children: [
+          //showing the header
           Container (
             child: Container(
-              margin: EdgeInsets.only(top: 45.0,bottom: 15.0),
-              padding: EdgeInsets.only(left: 20.0, right: 20.0),
+              margin: EdgeInsets.only(top: Dimensions.height45 ,bottom: Dimensions.height15),
+              padding: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -42,11 +45,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   ),
                   Center(
                     child: Container(
-                      child: Icon(Icons.search,color: Colors.white,),
-                      width: 45.0,
-                      height: 45.0,
+                      child: Icon(Icons.search,color: Colors.white,size: Dimensions.icon24 ,),
+                      width: Dimensions.height45,
+                      height: Dimensions.height45,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(Dimensions.width20),
                           color: AppColors.mainColor,
                       ),
                     ),
@@ -55,6 +58,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
+          //showing the bottom
           FoodPageBody(),
         ],
       ),

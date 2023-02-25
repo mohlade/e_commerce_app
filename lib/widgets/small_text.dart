@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/utils/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 
 class SmallText extends StatelessWidget {
@@ -18,7 +19,7 @@ class SmallText extends StatelessWidget {
       text,
       style: TextStyle(
         color:color,
-        fontSize: size,
+        fontSize: Dimensions.font12,
         height: height,
         fontFamily: 'Roboto',
       ),
