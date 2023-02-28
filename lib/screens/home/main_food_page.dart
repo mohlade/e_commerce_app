@@ -1,11 +1,14 @@
-import 'package:e_commerce_app/home/food_page_body.dart';
+
 import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/utils/colors.dart';
 
-import '../utils/dimensions.dart';
+import '../../utils/dimensions.dart';
+import 'food_page_body.dart';
+
+
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
@@ -59,7 +62,9 @@ class _MainFoodPageState extends State<MainFoodPage> {
             ),
           ),
           //showing the bottom
-          FoodPageBody(),
+          Expanded(child: SingleChildScrollView(
+            child: FoodPageBody(),
+          )),
         ],
       ),
     );
