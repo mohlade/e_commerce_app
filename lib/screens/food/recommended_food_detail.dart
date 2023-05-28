@@ -16,8 +16,10 @@ import '../../utils/app_constants.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
   final int pageId;
+  final String page;
 
-  const RecommendedFoodDetail({Key? key, required this.pageId})
+  const RecommendedFoodDetail(
+      {Key? key, required this.pageId, required this.page})
       : super(key: key);
 
   @override
@@ -38,47 +40,54 @@ class RecommendedFoodDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                    onTap: () {
+                  child: AppIcon(icon: Icons.arrow_back_ios_new_sharp),
+                  onTap: () {
+                    if (page == "cartpage") {
+                      Get.toNamed(RouterHelper.getCartPage());
+                    } else {
                       Get.toNamed(RouterHelper.getInitial());
-                    },
-                    child: AppIcon(icon: Icons.clear)),
+                    }
+                  },
+                ),
+
                 GetBuilder<PopularProductController>(builder: (controller) {
-                  return Stack(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(() => CartPage());
-                        },
-                        child: AppIcon(
+                  return GestureDetector(
+                    onTap: () {
+                      if (controller.totalItems >= 1)
+                        Get.toNamed(RouterHelper.getCartPage());
+                    },
+                    child: Stack(
+                      children: [
+                        AppIcon(
                           icon: Icons.shopping_cart_checkout_sharp,
                         ),
-                      ),
-                      Get.find<PopularProductController>().totalItems >= 1
-                          ? Positioned(
-                              right: 0,
-                              top: 0,
-                              child: AppIcon(
-                                icon: Icons.circle,
-                                size: 20,
-                                iconColor: Colors.transparent,
-                                backgroundColor: AppColors.mainColor,
-                              ),
-                            )
-                          : Container(),
-                      Get.find<PopularProductController>().totalItems >= 1
-                          ? Positioned(
-                              right: 3,
-                              top: 3,
-                              child: BigText(
-                                text: Get.find<PopularProductController>()
-                                    .totalItems
-                                    .toString(),
-                                size: 12,
-                                color: Colors.white,
-                              ),
-                            )
-                          : Container()
-                    ],
+                        Get.find<PopularProductController>().totalItems >= 1
+                            ? Positioned(
+                                right: 0,
+                                top: 0,
+                                child: AppIcon(
+                                  icon: Icons.circle,
+                                  size: 20,
+                                  iconColor: Colors.transparent,
+                                  backgroundColor: AppColors.mainColor,
+                                ),
+                              )
+                            : Container(),
+                        Get.find<PopularProductController>().totalItems >= 1
+                            ? Positioned(
+                                right: 3,
+                                top: 3,
+                                child: BigText(
+                                  text: Get.find<PopularProductController>()
+                                      .totalItems
+                                      .toString(),
+                                  size: 12,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Container()
+                      ],
+                    ),
                   );
                 })
                 //AppIcon(icon: Icons.shopping_cart_checkout_sharp)
